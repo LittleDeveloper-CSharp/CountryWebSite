@@ -1,0 +1,45 @@
+﻿@model CountryWebSite.Models.Country.ViewModels.CountryViewModel[]
+@{
+    ViewData["Title"] = "Страны";
+}
+
+<div class="d-flex flex-md-row flex-column">
+    <form class="d-flex flex-column" method="get">
+        <label for="query-text-box">
+            Поиск по наименованию
+            <input value="@ViewData["search-query"]" id="query-text-box" class="w-100" type="text" name="query" />
+        </label>
+        <button class="btn-info" type="submit">
+            Применить
+        </button>
+    </form>
+    @if (Model.Length > 0)
+    {
+        <table class="table table-info">
+            <thead>
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Столица</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var country in Model)
+                {
+                    <tr>
+                        <td>@country.Name</td>
+                        <td>@country.Capital</td>
+                        <td>
+                            <a class="btn-info p-2" asp-action="CountryDetails" asp-route-countryname="@country.Name">Подробнее</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="text-center p-5 m-5">
+            Информация отсутствует
+        </div>
+    }
+</div>

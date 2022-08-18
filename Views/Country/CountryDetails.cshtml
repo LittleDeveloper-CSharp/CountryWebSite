@@ -1,0 +1,24 @@
+﻿@model CountryWebSite.Models.Country.ViewModels.CountryDetailViewModel
+@{
+    ViewData["Title"] = Model == default ? "Информация отсутствует" : @Model.Name;
+}
+
+<div class="card">
+    @if (Model != default)
+    {
+        <div class="card-header">
+            @Html.DisplayNameFor(m => m.Name) - @Model.Name
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(m => m.Region) - @Model.Region</h5>
+            <h5 class="card-title">@Html.DisplayNameFor(m => m.Capital) - @Model.Capital</h5>
+            <p class="card-text">@Html.DisplayNameFor(m => m.Languages) - @Model.Languages</p>
+        </div>
+    }
+    else
+    {
+        <div class="m-5 p-5">
+            Информация отсутствует
+        </div>
+    }
+</div>
